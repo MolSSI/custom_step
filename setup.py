@@ -13,8 +13,8 @@ with open('HISTORY.rst') as history_file:
 
 requirements = [
     'molssi_workflow>=0.1',
-    'molssi_util>=0.1'
-    # TODO: put any other package requirements here
+    'molssi_util>=0.1',
+    'PyYAML'
 ]
 
 setup_requirements = [
@@ -34,7 +34,7 @@ setup(
     long_description=readme + '\n\n' + history,
     author="Paul Saxe",
     author_email='psaxe@molssi.org',
-    url='https://github.com/paulsaxe/custom_step',
+    url='https://github.com/molssi/custom_step',
     packages=find_packages(include=['custom_step']),
     include_package_data=True,
     install_requires=requirements,
@@ -62,10 +62,10 @@ setup(
     setup_requires=setup_requirements,
     entry_points={
         'org.molssi.workflow': [
-            'Custom = custom_step:CustomStep',
+            'Python = custom_step:CustomStep',
         ],
         'org.molssi.workflow.tk': [
-            'Custom = custom_step:CustomStep',
+            'Python = custom_step:CustomStep',
         ],
     }
 )

@@ -18,9 +18,8 @@ class Custom(molssi_workflow.Node):
         Keyword arguments:
         '''
         logger.debug('Creating Custom {}'.format(self))
-        self.method = 'is'
-        self.example = Q_(2, 'angstrom')
-        self.example_variable = 'my_variable'
+
+        self.script = ''
 
         super().__init__(
             workflow=workflow,
@@ -30,15 +29,7 @@ class Custom(molssi_workflow.Node):
     def run(self):
         """Run a Custom step.
         """
-        if self.method == 'is':
-            print('The example value is {:~P}'.format(self.example))
-            logger.info('The example value in Custom is ' +
-                        '{:~P}'.format(self.example))
-        elif 'variable' in self.method:
-            print('The example value is in the variable {}'.format(
-                self.example_variable)
-            )
-            logger.info('The example value in Custom is in ' +
-                        'the variable {}'.format(self.example_variable))
+
+        exec(self.script, molssi_workflow.workflow_variables._data)
 
         return super().run()

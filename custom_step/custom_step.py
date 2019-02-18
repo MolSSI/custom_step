@@ -10,9 +10,9 @@ import custom_step
 class CustomStep(object):
     my_description = {
         'description':
-        'An interface for Custom',
-        'group': 'Simulations',
-        'name': 'Custom'
+        'An interface for Custom Python steps',
+        'group': 'Custom',
+        'name': 'Python'
     }
 
     def __init__(self, workflow=None, gui=None):
