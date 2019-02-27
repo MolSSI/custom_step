@@ -4,8 +4,22 @@
 import molssi_workflow
 from molssi_workflow import units, Q_, data  # nopep8
 import logging
+import os
 
 logger = logging.getLogger(__name__)
+
+
+class cd:
+    """Context manager for changing the current working directory"""
+    def __init__(self, newPath):
+        self.newPath = os.path.expanduser(newPath)
+
+    def __enter__(self):
+        self.savedPath = os.getcwd()
+        os.chdir(self.newPath)
+
+    def __exit__(self, etype, value, traceback):
+        os.chdir(self.savedPath)
 
 
 class Custom(molssi_workflow.Node):
@@ -30,6 +44,8 @@ class Custom(molssi_workflow.Node):
         """Run a Custom step.
         """
 
-        exec(self.script, molssi_workflow.workflow_variables._data)
+        os.makedirs(self.directory, exist_ok=True)
+        with cd(self.directory):
+            exec(self.script, molssi_workflow.workflow_variables._data)
 
         return super().run()
