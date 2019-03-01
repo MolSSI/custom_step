@@ -12,10 +12,15 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    'molssi_workflow>=0.1',
-    'molssi_util>=0.1',
+    'Pmw',
+    'logging',
+    'molssi_util',
+    'molssi_workflow',
+    'pprint',
     'PyYAML'
 ]
+# 'os',
+# 'yaml',  is PyYAML
 
 setup_requirements = [
     'pytest-runner',
@@ -56,6 +61,7 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
     ],
     test_suite='tests',
     tests_require=test_requirements,
