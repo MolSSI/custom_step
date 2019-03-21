@@ -2,7 +2,7 @@
 """Non-graphical part of the Custom step in a MolSSI workflow"""
 
 import molssi_workflow
-from molssi_workflow import units, Q_, data  # nopep8
+from molssi_workflow import ureg, Q_, data  # nopep8
 import logging
 import os
 
