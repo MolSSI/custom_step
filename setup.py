@@ -15,7 +15,7 @@ requirements = [
     'Pmw',
     'logging',
     'molssi_util',
-    'molssi_workflow',
+    'seamm',
     'pprint',
     'PyYAML'
 ]
@@ -23,7 +23,7 @@ requirements = [
 # 'yaml',  is PyYAML
 
 setup_requirements = [
-    'pytest-runner',
+    # tmp pws 'pytest-runner',
     # TODO(paulsaxe): put setup requirements (distutils extensions, etc.) here
 ]
 
@@ -39,7 +39,7 @@ setup(
     long_description=readme + '\n\n' + history,
     author="Paul Saxe",
     author_email='psaxe@molssi.org',
-    url='https://github.com/molssi/custom_step',
+    url='https://github.com/molssi-seamm/custom_step',
     packages=find_packages(include=['custom_step']),
     include_package_data=True,
     install_requires=requirements,
@@ -67,10 +67,10 @@ setup(
     tests_require=test_requirements,
     setup_requires=setup_requirements,
     entry_points={
-        'org.molssi.workflow': [
+        'org.molssi.seamm': [
             'Python = custom_step:CustomStep',
         ],
-        'org.molssi.workflow.tk': [
+        'org.molssi.seamm.tk': [
             'Python = custom_step:CustomStep',
         ],
     }
