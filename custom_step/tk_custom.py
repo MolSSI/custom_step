@@ -2,7 +2,6 @@
 """The graphical part of a Custom step"""
 
 import seamm
-import molssi_util.molssi_widgets as mw
 import custom_step
 import Pmw
 import pprint  # nopep8
