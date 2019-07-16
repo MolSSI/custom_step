@@ -17,7 +17,7 @@ requirements = [
     'seamm_util',
     'seamm',
     'pprint',
-    'PyYAML'
+    'PyYAML>=5.1'
 ]
 # 'os',
 # 'yaml',  is PyYAML
