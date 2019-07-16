@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-"""Non-graphical part of the Custom step in a MolSSI workflow"""
+"""Non-graphical part of the Custom step in a MolSSI flowchart"""
 
-import molssi_workflow
-from molssi_workflow import ureg, Q_, data  # nopep8
+import seamm
+from seamm import ureg, Q_, data  # nopep8
 import logging
 import os
 
@@ -22,12 +22,12 @@ class cd:
         os.chdir(self.savedPath)
 
 
-class Custom(molssi_workflow.Node):
+class Custom(seamm.Node):
     def __init__(self,
-                 workflow=None,
+                 flowchart=None,
                  extension=None):
         '''Setup the non-graphical part of the Custom step in a
-        MolSSI workflow.
+        MolSSI flowchart.
 
         Keyword arguments:
         '''
@@ -36,7 +36,7 @@ class Custom(molssi_workflow.Node):
         self.script = ''
 
         super().__init__(
-            workflow=workflow,
+            flowchart=flowchart,
             title='Custom',
             extension=extension)
 
@@ -46,6 +46,6 @@ class Custom(molssi_workflow.Node):
 
         os.makedirs(self.directory, exist_ok=True)
         with cd(self.directory):
-            exec(self.script, molssi_workflow.workflow_variables._data)
+            exec(self.script, seamm.flowchart_variables._data)
 
         return super().run()
