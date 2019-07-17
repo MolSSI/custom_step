@@ -12,13 +12,11 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    'logging', 'seamm_util', 'seamm', 'pprint', 'PyYAML>=5.1'
+    'seamm_util', 'seamm', 'pprint', 'PyYAML>=5.1'
 ]
-# 'os',
-# 'yaml',  is PyYAML
 
 setup_requirements = [
-    # tmp pws 'pytest-runner',
+    'pytest-runner',
     # TODO(paulsaxe): put setup requirements (distutils extensions, etc.) here
 ]
 
