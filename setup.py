@@ -12,7 +12,7 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    'Pmw', 'logging', 'seamm_util', 'seamm', 'pprint', 'PyYAML>=5.1'
+    'logging', 'seamm_util', 'seamm', 'pprint', 'PyYAML>=5.1'
 ]
 # 'os',
 # 'yaml',  is PyYAML
