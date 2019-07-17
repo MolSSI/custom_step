@@ -12,12 +12,7 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    'Pmw',
-    'logging',
-    'seamm_util',
-    'seamm',
-    'pprint',
-    'PyYAML>=5.1'
+    'Pmw', 'logging', 'seamm_util', 'seamm', 'pprint', 'PyYAML>=5.1'
 ]
 # 'os',
 # 'yaml',  is PyYAML
@@ -67,11 +62,7 @@ setup(
     tests_require=test_requirements,
     setup_requires=setup_requirements,
     entry_points={
-        'org.molssi.seamm': [
-            'Python = custom_step:CustomStep',
-        ],
-        'org.molssi.seamm.tk': [
-            'Python = custom_step:CustomStep',
-        ],
+        'org.molssi.seamm': ['Python = custom_step:CustomStep',],
+        'org.molssi.seamm.tk': ['Python = custom_step:CustomStep',],
     }
 )

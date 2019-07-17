@@ -5,5 +5,4 @@
 
 import pytest  # nopep8
 
-
 from custom_step import custom_step  # nopep8
