@@ -4,6 +4,7 @@ import yaml
 
 
 class Highlighter:
+
     def __init__(self, text_widget, syntax_file):
         self.text_widget = text_widget
         self.syntax_file = syntax_file
@@ -39,8 +40,12 @@ class Highlighter:
             colour = self.categories[category]['colour']
             self.text_widget.tag_configure(category, foreground=colour)
 
-        self.text_widget.tag_configure("number", foreground=self.numbers_colour)
-        self.text_widget.tag_configure("string", foreground=self.strings_colour)
+        self.text_widget.tag_configure(
+            "number", foreground=self.numbers_colour
+        )
+        self.text_widget.tag_configure(
+            "string", foreground=self.strings_colour
+        )
 
     def highlight(self, event=None):
         length = tk.IntVar()
@@ -49,30 +54,46 @@ class Highlighter:
             for keyword in matches:
                 start = 1.0
                 keyword = keyword + "[^A-Za-z_-]"
-                idx = self.text_widget.search(keyword, start, stopindex=tk.END, count=length, regexp=1)
+                idx = self.text_widget.search(
+                    keyword, start, stopindex=tk.END, count=length, regexp=1
+                )
                 while idx:
                     char_match_found = int(str(idx).split('.')[1])
                     line_match_found = int(str(idx).split('.')[0])
                     if char_match_found > 0:
-                        previous_char_index = str(line_match_found) + '.' + str(char_match_found - 1)
-                        previous_char = self.text_widget.get(previous_char_index, previous_char_index + "+1c")
+                        previous_char_index = str(
+                            line_match_found
+                        ) + '.' + str(char_match_found - 1)
+                        previous_char = self.text_widget.get(
+                            previous_char_index, previous_char_index + "+1c"
+                        )
 
-                        if previous_char.isalnum() or previous_char in self.disallowed_previous_chars:
-                            end = f"{idx}+{length.get() - 1}c"
+                        if previous_char.isalnum(
+                        ) or previous_char in self.disallowed_previous_chars:
+                            # end = f"{idx}+{length.get() - 1}c"
+                            end = "{}+{}c".format(idx, length.get() - 1)
                             start = end
-                            idx = self.text_widget.search(keyword, start, stopindex=tk.END, regexp=1)
+                            idx = self.text_widget.search(
+                                keyword, start, stopindex=tk.END, regexp=1
+                            )
                         else:
-                            end = f"{idx}+{length.get() - 1}c"
+                            # end = f"{idx}+{length.get() - 1}c"
+                            end = "{}+{}c".format(idx, length.get() - 1)
                             self.text_widget.tag_add(category, idx, end)
 
                             start = end
-                            idx = self.text_widget.search(keyword, start, stopindex=tk.END, regexp=1)
+                            idx = self.text_widget.search(
+                                keyword, start, stopindex=tk.END, regexp=1
+                            )
                     else:
-                        end = f"{idx}+{length.get() - 1}c"
+                        # end = f"{idx}+{length.get() - 1}c"
+                        end = "{}+{}c".format(idx, length.get() - 1)
                         self.text_widget.tag_add(category, idx, end)
 
                         start = end
-                        idx = self.text_widget.search(keyword, start, stopindex=tk.END, regexp=1)
+                        idx = self.text_widget.search(
+                            keyword, start, stopindex=tk.END, regexp=1
+                        )
 
         self.highlight_regex(r"(\d)+[.]?(\d)*", "number")
         self.highlight_regex(r"[\'][^\']*[\']", "string")
@@ -81,13 +102,18 @@ class Highlighter:
     def highlight_regex(self, regex, tag):
         length = tk.IntVar()
         start = 1.0
-        idx = self.text_widget.search(regex, start, stopindex=tk.END, regexp=1, count=length)
+        idx = self.text_widget.search(
+            regex, start, stopindex=tk.END, regexp=1, count=length
+        )
         while idx:
-            end = f"{idx}+{length.get()}c"
+            # end = f"{idx}+{length.get()}c"
+            end = "{}+{}c".format(idx, length.get())
             self.text_widget.tag_add(tag, idx, end)
 
             start = end
-            idx = self.text_widget.search(regex, start, stopindex=tk.END, regexp=1, count=length)
+            idx = self.text_widget.search(
+                regex, start, stopindex=tk.END, regexp=1, count=length
+            )
 
     def force_highlight(self):
         self.highlight()
@@ -101,6 +127,3 @@ if __name__ == '__main__':
     w = tk.Tk()
     h = Highlighter(tk.Text(w), 'languages/python.yaml')
     w.mainloop()
-
-
-

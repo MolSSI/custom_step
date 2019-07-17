@@ -3,6 +3,7 @@ import tkinter.ttk as ttk
 
 
 class FindWindow(tk.Toplevel):
+
     def __init__(self, master, **kwargs):
         super().__init__(**kwargs)
 
@@ -20,15 +21,36 @@ class FindWindow(tk.Toplevel):
         middle_frame = tk.Frame(self, bg=self.master.master.background)
         bottom_frame = tk.Frame(self, bg=self.master.master.background)
 
-        find_entry_label = ttk.Label(top_frame, text="Find: ", style="editor.TLabel")
+        find_entry_label = ttk.Label(
+            top_frame, text="Find: ", style="editor.TLabel"
+        )
         self.find_entry = ttk.Entry(top_frame, textvar=self.text_to_find)
 
-        replace_entry_label = ttk.Label(middle_frame, text="Replace: ", style="editor.TLabel")
-        self.replace_entry = ttk.Entry(middle_frame, textvar=self.text_to_replace_with)
+        replace_entry_label = ttk.Label(
+            middle_frame, text="Replace: ", style="editor.TLabel"
+        )
+        self.replace_entry = ttk.Entry(
+            middle_frame, textvar=self.text_to_replace_with
+        )
 
-        self.find_button = ttk.Button(bottom_frame, text="Find", command=self.on_find, style="editor.TButton")
-        self.replace_button = ttk.Button(bottom_frame, text="Replace", command=self.on_replace, style="editor.TButton")
-        self.cancel_button = ttk.Button(bottom_frame, text="Cancel", command=self.on_cancel, style="editor.TButton")
+        self.find_button = ttk.Button(
+            bottom_frame,
+            text="Find",
+            command=self.on_find,
+            style="editor.TButton"
+        )
+        self.replace_button = ttk.Button(
+            bottom_frame,
+            text="Replace",
+            command=self.on_replace,
+            style="editor.TButton"
+        )
+        self.cancel_button = ttk.Button(
+            bottom_frame,
+            text="Cancel",
+            command=self.on_cancel,
+            style="editor.TButton"
+        )
 
         find_entry_label.pack(side=tk.LEFT, padx=(20, 0))
         self.find_entry.pack(side=tk.LEFT, fill=tk.X, expand=1)
@@ -52,7 +74,9 @@ class FindWindow(tk.Toplevel):
         self.master.find(self.text_to_find.get())
 
     def on_replace(self):
-        self.master.replace_text(self.text_to_find.get(), self.text_to_replace_with.get())
+        self.master.replace_text(
+            self.text_to_find.get(), self.text_to_replace_with.get()
+        )
 
     def on_cancel(self):
         self.master.cancel_find()

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 """The graphical part of a Custom step"""
 
 import seamm
@@ -16,16 +17,31 @@ class TkCustom(seamm.TkNode):
 
     node_class = custom_step.Custom
 
-    def __init__(self, tk_flowchart=None, node=None, canvas=None,
-                 x=120, y=20, w=200, h=50):
+    def __init__(
+        self,
+        tk_flowchart=None,
+        node=None,
+        canvas=None,
+        x=120,
+        y=20,
+        w=200,
+        h=50
+    ):
         '''Initialize a node
 
         Keyword arguments:
         '''
         self.dialog = None
 
-        super().__init__(tk_flowchart=tk_flowchart, node=node,
-                         canvas=canvas, x=x, y=y, w=w, h=h)
+        super().__init__(
+            tk_flowchart=tk_flowchart,
+            node=node,
+            canvas=canvas,
+            x=x,
+            y=y,
+            w=w,
+            h=h
+        )
 
     def create_dialog(self):
         """Create the dialog!"""
@@ -34,7 +50,8 @@ class TkCustom(seamm.TkNode):
             buttons=('OK', 'Help', 'Cancel'),
             master=self.toplevel,
             title='Edit Custom Python',
-            command=self.handle_dialog)
+            command=self.handle_dialog
+        )
         self.dialog.withdraw()
 
         # self._widget, which is inherited from the base class, is
@@ -67,7 +84,7 @@ class TkCustom(seamm.TkNode):
         # keep track of the row in a variable, so that the layout is flexible
         # if e.g. rows are skipped to control such as 'method' here
         row = 0
-        w['textarea'].grid(row=row, column=0, sticky=tk.N+tk.E+tk.S+tk.W)
+        w['textarea'].grid(row=row, column=0, sticky=tk.N + tk.E + tk.S + tk.W)
         row += 1
 
     def right_click(self, event):
@@ -99,7 +116,8 @@ class TkCustom(seamm.TkNode):
         if result != "OK":
             self.dialog.deactivate(result)
             raise RuntimeError(
-                "Don't recognize dialog result '{}'".format(result))
+                "Don't recognize dialog result '{}'".format(result)
+            )
 
         self.dialog.deactivate(result)
 

@@ -62,7 +62,11 @@ setup(
     tests_require=test_requirements,
     setup_requires=setup_requirements,
     entry_points={
-        'org.molssi.seamm': ['Python = custom_step:CustomStep',],
-        'org.molssi.seamm.tk': ['Python = custom_step:CustomStep',],
+        'org.molssi.seamm': [
+            'Python = custom_step:CustomStep',
+        ],
+        'org.molssi.seamm.tk': [
+            'Python = custom_step:CustomStep',
+        ],
     }
 )

@@ -2,6 +2,7 @@ import tkinter as tk
 
 
 class LineNumbers(tk.Text):
+
     def __init__(self, master, text_widget, **kwargs):
         super().__init__(master, **kwargs)
 
@@ -14,7 +15,9 @@ class LineNumbers(tk.Text):
     def on_key_press(self, event=None):
         final_index = str(self.text_widget.index(tk.END))
         num_of_lines = final_index.split('.')[0]
-        line_numbers_string = "\n".join(str(no + 1) for no in range(int(num_of_lines)))
+        line_numbers_string = "\n".join(
+            str(no + 1) for no in range(int(num_of_lines))
+        )
         width = len(str(num_of_lines))
 
         self.configure(state='normal', width=width)
@@ -24,4 +27,3 @@ class LineNumbers(tk.Text):
 
     def force_update(self):
         self.on_key_press()
-

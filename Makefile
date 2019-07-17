@@ -47,13 +47,14 @@ clean-test: ## remove test and coverage artifacts
 	rm -f .coverage
 	rm -fr htmlcov/
 
-lint: ## check style with flake8
+lint: ## check style with yapf
 	yapf --diff --recursive  setup.py custom_step tests
-	flake8 setup.py custom_step tests
+
+#	flake8 setup.py custom_step tests
 
 format: ## reformat with with yapf and isort
-	yapf --recursive --in-place setup.py molsystem tests
-	#isort --recursive --atomic setup.py molsystem tests
+	yapf --recursive --in-place setup.py custom_step tests
+	#isort --recursive --atomic setup.py custom_step tests
 
 test: ## run tests quickly with the default Python
 	py.test

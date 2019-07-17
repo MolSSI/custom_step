@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 """Non-graphical part of the Custom step in a MolSSI flowchart"""
 
 import seamm
@@ -11,6 +12,7 @@ logger = logging.getLogger(__name__)
 
 class cd:
     """Context manager for changing the current working directory"""
+
     def __init__(self, newPath):
         self.newPath = os.path.expanduser(newPath)
 
@@ -23,9 +25,8 @@ class cd:
 
 
 class Custom(seamm.Node):
-    def __init__(self,
-                 flowchart=None,
-                 extension=None):
+
+    def __init__(self, flowchart=None, extension=None):
         '''Setup the non-graphical part of the Custom step in a
         MolSSI flowchart.
 
@@ -36,9 +37,8 @@ class Custom(seamm.Node):
         self.script = ''
 
         super().__init__(
-            flowchart=flowchart,
-            title='Custom',
-            extension=extension)
+            flowchart=flowchart, title='Custom', extension=extension
+        )
 
     def run(self):
         """Run a Custom step.
