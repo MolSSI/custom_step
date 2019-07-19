@@ -12,17 +12,19 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    'seamm_util', 'seamm', 'pprint', 'PyYAML>=5.1'
+    'Pmw',
+    'pprint',
+    'PyYAML>=5.1'
+    'seamm',
+    'seamm_util',
 ]
 
 setup_requirements = [
     'pytest-runner',
-    # TODO(paulsaxe): put setup requirements (distutils extensions, etc.) here
 ]
 
 test_requirements = [
     'pytest',
-    # TODO: put package test requirements here
 ]
 
 setup(
@@ -44,14 +46,9 @@ setup(
         'Intended Audience :: Science/Research',
         'Topic :: Scientific/Engineering :: Chemistry',
         'Topic :: Scientific/Engineering :: Physics',
-        'Topic :: Scientific/Engineering :: Materials Science',
-        'Topic :: Scientific/Engineering :: Computational Materials Science',
-        'Topic :: Scientific/Engineering :: Computational Molecular Science',
         'License :: OSI Approved :: BSD License',
         'Natural Language :: English',
-        'Programming Language :: Python :: 3  :: Only',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3 :: Only',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',

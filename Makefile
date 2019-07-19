@@ -47,14 +47,13 @@ clean-test: ## remove test and coverage artifacts
 	rm -f .coverage
 	rm -fr htmlcov/
 
-lint: ## check style with yapf
-	yapf --diff --recursive  setup.py custom_step tests
-
-#	flake8 setup.py custom_step tests
+lint: ## check style with yapf and flake8
+	yapf --diff --recursive custom_step tests
+	flake8 custom_step tests
 
 format: ## reformat with with yapf and isort
-	yapf --recursive --in-place setup.py custom_step tests
-	#isort --recursive --atomic setup.py custom_step tests
+	yapf --recursive --in-place custom_step tests
+#	isort --recursive --atomic setup.py custom_step tests
 
 test: ## run tests quickly with the default Python
 	py.test
@@ -80,8 +79,8 @@ servedocs: docs ## compile the docs watching for changes
 	watchmedo shell-command -p '*.rst' -c '$(MAKE) -C docs html' -R -D .
 
 release: clean ## package and upload a release
-	python setup.py sdist upload
-	python setup.py bdist_wheel upload
+	python setup.py sdist bdist_wheel
+	python -m twine upload dist/*
 
 dist: clean ## builds source and wheel package
 	python setup.py sdist
