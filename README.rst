@@ -6,7 +6,7 @@ Custom Step
 .. image:: https://img.shields.io/pypi/v/custom_step.svg
         :target: https://pypi.python.org/pypi/custom_step
 
-.. image:: https://img.shields.io/travis/molssi-seamm/custom_step.svg
+.. image:: https://travis-ci.org/molssi-seamm/custom_step.svg?branch=master
         :target: https://travis-ci.org/molssi-seamm/custom_step
 
 .. image:: https://readthedocs.org/projects/custom-step/badge/?version=latest
@@ -16,6 +16,9 @@ Custom Step
 .. image:: https://pyup.io/repos/github/molssi-seamm/custom_step/shield.svg
      :target: https://pyup.io/repos/github/molssi-seamm/custom_step/
      :alt: Updates
+
+.. image:: https://codecov.io/gh/molssi-seamm/custom_step/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/molssi-seamm/custom_step
 
 
 Custom stage for Python code
