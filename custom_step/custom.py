@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Non-graphical part of the Custom step in a MolSSI flowchart"""
+"""Non-graphical part of the Custom step in a SEAMM flowchart"""
 
 import seamm
 from seamm_util import ureg, Q_  # noqa: F401
@@ -27,11 +27,11 @@ class cd:
 class Custom(seamm.Node):
 
     def __init__(self, flowchart=None, extension=None):
-        '''Setup the non-graphical part of the Custom step in a
-        MolSSI flowchart.
+        """Setup the non-graphical part of the Custom step in a
+        SEAMM flowchart.
 
         Keyword arguments:
-        '''
+        """
         logger.debug('Creating Custom {}'.format(self))
 
         self.script = ''
