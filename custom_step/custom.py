@@ -3,7 +3,7 @@
 """Non-graphical part of the Custom step in a MolSSI flowchart"""
 
 import seamm
-from seamm import ureg, Q_, data  # nopep8
+from seamm_util import ureg, Q_  # noqa: F401
 import logging
 import os
 

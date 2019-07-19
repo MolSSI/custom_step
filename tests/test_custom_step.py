@@ -3,6 +3,10 @@
 
 """Tests for `custom_step` package."""
 
-import pytest  # nopep8
+import custom_step
 
-from custom_step import custom_step  # nopep8
+
+def test_construction():
+    """Simplest test that we can make a Custom object"""
+    instance = custom_step.Custom()
+    assert str(type(instance)) == "<class 'custom_step.custom.Custom'>"

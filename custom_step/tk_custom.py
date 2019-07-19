@@ -5,9 +5,8 @@
 import seamm
 import custom_step
 import Pmw
-import pprint  # nopep8
+import pprint  # noqa: F401
 import tkinter as tk
-import tkinter.ttk as ttk
 
 
 class TkCustom(seamm.TkNode):

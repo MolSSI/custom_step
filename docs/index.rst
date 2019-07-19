@@ -1,5 +1,5 @@
-Welcome to Custom Step's documentation!
-======================================
+Welcome to the documentation for a SEAMM custom Python step!
+============================================================
 
 Contents:
 

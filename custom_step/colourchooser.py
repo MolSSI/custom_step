@@ -173,11 +173,6 @@ class ColourChooser(tk.Toplevel):
         sv.set(choice)
 
     def save(self):
-        # yaml_file_contents = f"background: '{self.chosen_background_colour.get()}'\n" \
-        #                      + f"foreground: '{self.chosen_foreground_colour.get()}'\n" \
-        #                      + f"text_background: '{self.chosen_text_background_colour.get()}'\n" \
-        #                      + f"text_foreground: '{self.chosen_text_foreground_colour.get()}'\n"
-
         yaml_file_contents = (
             "background: '{}'\n".format(self.chosen_background_colour.get()) +
             "foreground: '{}'\n".format(self.chosen_foreground_colour.get()) +
