@@ -31,7 +31,7 @@ Custom stage for Python code
 Features
 --------
 
-* TODO
+* TODO: get the Python highlighting working
 
 Credits
 ---------
