@@ -29,7 +29,7 @@ test_requirements = [
 
 setup(
     name='custom_step',
-    version='0.1.0',
+    version='0.2.0',
     description="Custom stage for Python code",
     long_description=readme + '\n\n' + history,
     author="Paul Saxe",
