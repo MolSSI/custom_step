@@ -2,6 +2,7 @@
 
 """Non-graphical part of the Custom step in a SEAMM flowchart"""
 
+import custom_step
 import seamm
 from seamm_util import ureg, Q_  # noqa: F401
 import logging
@@ -39,6 +40,31 @@ class Custom(seamm.Node):
         super().__init__(
             flowchart=flowchart, title='Custom', extension=extension
         )
+
+    @property
+    def version(self):
+        """The semantic version of this module.
+        """
+        return custom_step.__version__
+
+    @property
+    def git_revision(self):
+        """The git version of this module.
+        """
+        return custom_step.__git_revision__
+
+    def description_text(self, P=None):
+        """Return a short description of this step.
+
+        Return a nicely formatted string describing what this step will
+        do.
+
+        Keyword arguments:
+            P: a dictionary of parameter values, which may be variables
+                or final values. If None, then the parameters values will
+                be used as is.
+        """
+        return self.header + '\n'
 
     def run(self):
         """Run a Custom step.
