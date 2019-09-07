@@ -25,7 +25,8 @@ with open('HISTORY.rst') as history_file:
 requirements = [
     'seamm_util>=0.5',
     'seamm>=0.5',
-    'Pmw'
+    'Pmw',
+    'pyyaml>=5.1'
 ]
 
 setup(
