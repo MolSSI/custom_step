@@ -104,7 +104,7 @@ class TkCustom(seamm.TkNode):
         self.dialog.activate(geometry='centerscreenfirst')
 
     def handle_dialog(self, result):
-        if result == 'Cancel':
+        if result is None or result == 'Cancel':
             self.dialog.deactivate(result)
             return
 
