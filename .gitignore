@@ -147,3 +147,6 @@ target/
 # Cookiecutter
 output/
 python_boilerplate/
+
+# pyenv python configuration file
+.python-version

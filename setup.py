@@ -22,12 +22,8 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = [
-    'seamm_util>=0.5',
-    'seamm>=0.5',
-    'Pmw',
-    'pyyaml>=5.1'
-]
+with open('requirements_install.txt') as fd:
+    requirements = fd.read()
 
 setup(
     name='custom_step',
@@ -75,7 +71,7 @@ setup(
     keywords='custom_step',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
-        'Intended Audience :: Developers',
+        'Intended Audience :: Science/Research',
         'License :: OSI Approved :: BSD License',
         'Natural Language :: English',
         'Programming Language :: Python :: 3 :: Only',

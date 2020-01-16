@@ -1,0 +1,26 @@
+name: test
+
+channels:
+  - default
+
+dependencies:
+    # Base depends
+  - python
+  - pip
+
+    # Testing
+  - coverage
+  - flake8
+  - pytest
+  - pytest-cov
+  - pytest-runner
+
+  # Pip-only installs
+  - pip:
+    - Pmw
+    - pyyaml>=5.1
+    - seamm>=0.7
+    - seamm-util>=0.7
+      # Testing
+    - yapf
+
