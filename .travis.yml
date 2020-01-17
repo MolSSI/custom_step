@@ -1,5 +1,6 @@
 language: python
 script: pytest
+os: linux
 
 before_install:
     # Additional info about the build
@@ -80,6 +81,7 @@ jobs:
     - stage: deploy
       name: "Deploy to PyPi"
       if: tag IS present
+      os: linux
       dist: xenial
       python: 3.7
       script: skip
@@ -92,6 +94,6 @@ jobs:
           condition: $TRAVIS_OS_NAME = linux
           repo: molssi-seamm/custom_step
           tags: true
-        user: seamm
+        username: seamm
         password:
           secure: qQxmOlaEkS2Ea2WWN/7mGG2idFF4FEFTKV9/ELI/b5IK4dUzIcDbXWuJ5+T1gCMv2yTpeLY3AmLEoXzSxwZTq/7TmK2YNmYyBTEl24PXNo2vEp/NHGjEyu+cLaw46W8A/BwU+CLciTvka2yNGOknTCV4hzdBGNd6vt0ooL9U23JpV7jdjQVp2WEry7EBdwPYrYj6AxyyzE3XvkqUAyCVKCH916MjKgCWXCdMK95OGENWXp2jFTjqBrSddwjFfg0IaJLHghQhi7WAQipLmZU1Y1vgjEhjIh/VSqlzBRg8Vl0G570daOI3YR3WWL2HBTGmMxQjHwoXMFcfjvcL7ish38p6+Wx7SztfA46rwnj+CEwevgpSzim9Mv5A8QcbKEVmdxjr+wVIcPt/MqZ/mUu43/Vt+x4Z+PdqSLqqiUhdk+6C6zN8GTw6QYx4yJy0a1XTl+jvkzIsB/jrWJWvzSB9AMgZ95j1WjeM0E2h6pd3rYoESN6lO69NqqEyHzo57zqWil74A+obF64veBgZqMy6YCgHkrqiqmHEp7kln+myOv7Z35z3qmNsJYb/rTw7PktjxHUR3HRNrU/t/4JGzaV79KN3Br1F5m1kXRdGvpIfSOYCxFbvF2ElcXTuoXyYmTtF5VgURX1P5YT3ZXttJLcE5L6HJ+NCEV9oMeDOb1Uy+z8=
