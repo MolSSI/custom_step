@@ -22,8 +22,8 @@ install:
   - conda list
   - pip freeze
 
-matrix:
-  fast_finish: true
+# matrix:
+#   fast_finish: true
 
 notifications:
     email: false
