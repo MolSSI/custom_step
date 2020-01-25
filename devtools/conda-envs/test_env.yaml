@@ -19,8 +19,9 @@ dependencies:
   - pip:
     - Pmw
     - pyyaml>=5.1
-    - seamm>=0.7
-    - seamm-util>=0.7
+    - seamm>=0.8
+    - seamm-util>=0.8
+    - seamm-widgets>=0.8
       # Testing
     - yapf
 
