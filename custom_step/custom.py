@@ -4,7 +4,6 @@
 
 import custom_step
 import seamm
-from seamm_util import ureg, Q_  # noqa: F401
 import logging
 import os
 

@@ -4,7 +4,6 @@
 
 import seamm
 import custom_step
-import pprint  # noqa: F401
 import tkinter as tk
 
 
