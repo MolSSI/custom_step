@@ -2,6 +2,7 @@
 [run]
    omit =
         */tk_*
+        */_version.py
         custom_step/colourchooser.py
         custom_step/findwindow.py
         custom_step/fontchooser.py
