@@ -6,7 +6,14 @@ coverage:
       default:
         threshold: 50%
 ignore:
-  - *_step/tk_*
+  - **/tk_*.py
+  - custom_step/colourchooser.py
+  - custom_step/findwindow.py
+  - custom_step/fontchooser.py
+  - custom_step/highlighter.py
+  - custom_step/linenumbers.py
+  - custom_step/textarea.py
+  - custom_step/texteditor.py
 comment:
   layout: "header"
   require_changes: false
