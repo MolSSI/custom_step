@@ -17,6 +17,7 @@ dependencies:
 
   # Pip-only installs
   - pip:
+    - codecov
     - Pmw
     - pyyaml>=5.1
     - seamm>=0.8
