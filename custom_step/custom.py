@@ -136,4 +136,6 @@ class Custom(seamm.Node):
         with cd(self.directory):
             exec(P['script'], seamm.flowchart_variables._data)
 
+        printer.normal('')
+
         return next_node
