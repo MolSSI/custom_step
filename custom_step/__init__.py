@@ -9,6 +9,7 @@ A step in a SEAMM flowchart for custom Python
 # the custom_step package.
 
 from custom_step.custom import Custom  # noqa: F401
+from custom_step.custom_parameters import CustomParameters  # noqa: F401, E501
 from custom_step.custom_step import CustomStep  # noqa: F401
 from custom_step.tk_custom import TkCustom  # noqa: F401
 from custom_step.colourchooser import ColourChooser  # noqa: F401
