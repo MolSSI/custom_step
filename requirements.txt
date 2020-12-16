@@ -1,3 +1,2 @@
 PyYAML==5.3.1
 seamm==2020.12.4
-seamm-util==2020.12.2
