@@ -1,3 +1,4 @@
+MODULE := custom_step
 .PHONY: clean clean-test clean-pyc clean-build docs help
 .DEFAULT_GOAL := help
 define BROWSER_PYSCRIPT
@@ -46,31 +47,38 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr .tox/
 	rm -f .coverage
 	rm -fr htmlcov/
+	find . -name '.pytype' -exec rm -fr {} +
 
-lint: ## check style with yapf and flake8
-	yapf --diff --recursive custom_step tests
-	flake8 custom_step tests
+lint: ## check style with flake8
+	flake8 $(MODULE) tests
+	yapf --diff --recursive  $(MODULE) tests
 
 format: ## reformat with with yapf and isort
-	yapf --recursive --in-place custom_step tests
-#	isort --recursive --atomic setup.py custom_step tests
+	yapf --recursive --in-place $(MODULE) tests
+
+typing: ## check typing
+	pytype $(MODULE)
 
 test: ## run tests quickly with the default Python
 	py.test
+
+dependencies:
+	pur -r requirements_dev.txt
+	pip install -r requirements_dev.txt
 
 test-all: ## run tests on every Python version with tox
 	tox
 
 coverage: ## check code coverage quickly with the default Python
-	coverage run --source custom_step -m pytest
+	coverage run --source $(MODULE) -m pytest
 	coverage report -m
 	coverage html
 	$(BROWSER) htmlcov/index.html
 
 docs: ## generate Sphinx HTML documentation, including API docs
-	rm -f docs/custom_step.rst
-	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ custom_step
+	rm -f docs/developer/$(MODULE).rst
+	rm -f docs/developer/modules.rst
+	sphinx-apidoc -o docs/developer $(MODULE)
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	$(BROWSER) docs/_build/html/index.html
@@ -91,4 +99,4 @@ install: uninstall ## install the package to the active Python's site-packages
 	python setup.py install
 
 uninstall: clean ## uninstall the package
-	pip uninstall --yes custom_step
+	pip uninstall --yes $(MODULE)

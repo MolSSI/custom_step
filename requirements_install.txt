@@ -1,3 +1,2 @@
 seamm>=2020.12.4
-seamm_util>=2020.12.2
 pyyaml>=5.3.1

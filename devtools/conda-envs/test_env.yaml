@@ -21,8 +21,12 @@ dependencies:
   - pip:
     - pyyaml>=5.3.1
     - seamm>=2020.12.4
-    - seamm-util>=2020.12.2
 
     # Testing
     - yapf
 
+    # Documentation
+    - rinohtype
+    - pygments
+    - sphinx-rtd-theme
+    - pystemmer
