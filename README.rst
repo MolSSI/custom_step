@@ -2,32 +2,38 @@
 Custom Step
 ===========
 
-.. image:: https://travis-ci.org/molssi-seamm/custom_step.svg?branch=master
-   :target: https://travis-ci.org/molssi-seamm/custom_step
+.. image:: https://img.shields.io/github/issues-pr-raw/molssi-seamm/custom_step
+   :target: https://github.com/molssi-seamm/custom_step/pulls
+   :alt: GitHub pull requests
+
+.. image:: https://github.com/molssi-seamm/custom_step/workflows/CI/badge.svg
+   :target: https://github.com/molssi-seamm/custom_step/actions
+   :alt: Build Status
 
 .. image:: https://codecov.io/gh/molssi-seamm/custom_step/branch/master/graph/badge.svg
    :target: https://codecov.io/gh/molssi-seamm/custom_step
+   :alt: Code Coverage
 
 .. image:: https://img.shields.io/lgtm/grade/python/g/molssi-seamm/custom_step.svg?logo=lgtm&logoWidth=18
    :target: https://lgtm.com/projects/g/molssi-seamm/custom_step/context:python
    :alt: Code Quality
 
-.. image:: https://readthedocs.org/projects/custom-step/badge/?version=latest
-   :target: https://custom-step.readthedocs.io/en/latest/?badge=latest
+.. image:: https://github.com/molssi-seamm/custom_step/workflows/Documentation/badge.svg
+   :target: https://molssi-seamm.github.io/custom_step/index.html
    :alt: Documentation Status
 
 .. image:: https://pyup.io/repos/github/molssi-seamm/custom_step/shield.svg
    :target: https://pyup.io/repos/github/molssi-seamm/custom_step/
-   :alt: Updates
+   :alt: Updates for Dependencies
 
 .. image:: https://img.shields.io/pypi/v/custom_step.svg
    :target: https://pypi.python.org/pypi/custom_step
+   :alt: PyPi VERSION
 
 Custom stage for Python code
 
-
 * Free software: BSD license
-* Documentation: https://custom-step.readthedocs.io.
+* Documentation: https://molssi-seamm.github.io/custom_step/index.html
 
 
 Features
