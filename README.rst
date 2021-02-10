@@ -30,16 +30,27 @@ Custom Step
    :target: https://pypi.python.org/pypi/custom_step
    :alt: PyPi VERSION
 
-Custom stage for Python code
+Description
+-----------
+
+A SEAMM plug-in for custom Python scripts in a flowchart.
+
+This plug-in provides custom python scripting in flowcharts. The
+scripts have access to the variables in the flowchart, and can set
+them as well as get their values. The scripts can access all of the
+functionality in the SEAMM framework as well as other installed Python
+packages.
 
 * Free software: BSD license
 * Documentation: https://molssi-seamm.github.io/custom_step/index.html
 
-
 Features
 --------
 
-* TODO: get the Python highlighting working
+* Read and write access to flowchart variables.
+* Access to the molecular system along with all of its methods.
+* Access to the tables in the flowchart.
+* Standard Python, including all installed packages.
 
 Credits
 ---------
