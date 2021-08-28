@@ -124,18 +124,34 @@ class Custom(seamm.Node):
         )
 
         # Print what we are doing -- getting formatted values for printing
-        PP = self.parameters.current_values_to_dict(
-            context=seamm.flowchart_variables._data,
-            formatted=True,
-            units=False
+        printer.normal(self.header)
+
+        # Override simple print statements
+        script = (
+            "import builtins\n"
+            "import seamm_util.printing as printing\n"
+            "job = printing.getPrinter()\n"
+            "original_print = print\n"
+            "\n"
+            "def new_print(*objects, sep=' ', **kwargs):\n"
+            "    if len(kwargs) > 0:\n"
+            "        builtins.print(*objects, sep=sep, **kwargs)\n"
+            "    else:\n"
+            "        job.job(sep.join(objects))\n"
+            "print = new_print\n"
         )
-        printer.normal(__(self.description_text(PP), indent=self.indent))
+        script += P['script']
 
         # And do it!
         os.makedirs(self.directory, exist_ok=True)
-        with cd(self.directory):
-            exec(P['script'], seamm.flowchart_variables._data)
-
-        printer.normal('')
+        try:
+            with cd(self.directory):
+                exec(script, seamm.flowchart_variables._data)
+        except Exception as e:
+            printer.normal(f"\n    ***{e.__class__.__name__}*** {str(e)}")
+            raise
+        else:
+            printer.normal('    --- end of script ---')
+            printer.normal('')
 
         return next_node
