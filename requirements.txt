@@ -1,1 +1,3 @@
-seamm==2020.12.4
+PyYAML==6.0
+seamm==2021.10.25
+seamm_util==2021.10.25

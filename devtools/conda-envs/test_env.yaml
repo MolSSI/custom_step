@@ -11,6 +11,7 @@ dependencies:
   # Dependencies for this module
   - pyyaml>=5.3.1
   - seamm
+  - seamm-util
 
   # Testing
   - codecov
