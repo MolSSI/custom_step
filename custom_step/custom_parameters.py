@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Control parameters for the Customl step in a SEAMM flowchart
+Control parameters for the Custom step in a SEAMM flowchart
 """
 
 import logging
@@ -21,16 +21,13 @@ class CustomParameters(seamm.Parameters):
     You need to replace the 'time' example below with one or more
     definitions of the control parameters for your plugin and application.
 
-    Attributes
-    ----------
-    parameters : {'kind', 'default', 'default_units', 'enumeration',
-                  'format_string', description', help_text'}
+    parameters : {<see items below>}
         A dictionary containing the parameters for the current step.
         Each key of the dictionary is a dictionary that contains the
         the following keys: kind, default, default_units, enumeration,
         format_string, description and help text.
 
-    parameters['kind']: custom
+    'kind' : custom
         Specifies the kind of a variable. While the 'kind' of a variable might
         be a numeric value, it may still have enumerated custom values
         meaningful to the user. For instance, if the parameter is
@@ -39,53 +36,54 @@ class CustomParameters(seamm.Parameters):
         parameter can be set to a variable of expression, indicated by having
         '$' as the first character in the field. For example, $OPTIMIZER_CONV.
 
-    parameters['default'] : 'integer' or 'float' or 'string' or 'boolean' or
-        'enum' The default value of the parameter, used to reset it.
+    'default' : 'integer' or 'float' or 'string' or 'boolean' or 'enum'
+        The default value of the parameter, used to reset it.
 
-    parameters['default_units'] : str
+    'default_units' : str
         The default units, used for resetting the value.
 
-    parameters['enumeration']: tuple
+    'enumeration' : tuple
         A tuple of enumerated values.
 
-    parameters['format_string']: str
+    'format_string' : str
         A format string for 'pretty' output.
 
-    parameters['description']: str
+    'description' : str
         A short string used as a prompt in the GUI.
 
-    parameters['help_text']: tuple
+    'help_text' : tuple
         A longer string to display as help for the user.
 
     See Also
     --------
-    Custom, TkCustom,
-    CustomParameters, CustomStep
+    Custom, TkCustom, CustomParameters, CustomStep
 
     Examples
     --------
-    parameters = {
-        "time": {
-            "default": 100.0,
-            "kind": "float",
-            "default_units": "ps",
-            "enumeration": tuple(),
-            "format_string": ".1f",
-            "description": "Simulation time:",
-            "help_text": ("The time to simulate in the dynamics run.")
-        },
-    }
+    ::
+
+        parameters = {
+            "time": {
+                "default": 100.0,
+                "kind": "float",
+                "default_units": "ps",
+                "enumeration": tuple(),
+                "format_string": ".1f",
+                "description": "Simulation time:",
+                "help_text": ("The time to simulate in the dynamics run.")
+            },
+        }
     """
 
     parameters = {
         "script": {
-            "default": '',
+            "default": "",
             "kind": "string",
             "default_units": None,
             "enumeration": tuple(),
             "format_string": "",
             "description": "Script:",
-            "help_text": ("The Python script")
+            "help_text": ("The Python script"),
         },
     }
 
@@ -107,9 +105,8 @@ class CustomParameters(seamm.Parameters):
         None
         """
 
-        logger.debug('CustomParameters.__init__')
+        logger.debug("CustomParameters.__init__")
 
         super().__init__(
-            defaults={**CustomParameters.parameters, **defaults},
-            data=data
+            defaults={**CustomParameters.parameters, **defaults}, data=data
         )

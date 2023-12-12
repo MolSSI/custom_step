@@ -21,7 +21,7 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-with open('requirements_install.txt') as fd:
+with open('requirements.txt') as fd:
     requirements = fd.read()
 
 setup(
@@ -35,18 +35,8 @@ setup(
     cmdclass=versioneer.get_cmdclass(),
     license='BSD-3-Clause',
     url='https://github.com/molssi-seamm/custom_step',
-
-    
-    # Which Python importable modules should be included when your package is
-    # installed handled automatically by setuptools. Use 'exclude' to prevent
-    # some specific subpackage(s) from being added, if needed
     packages=find_packages(include=['custom_step']),
-
-    # Optional include package data to ship with your package. Customize
-    # MANIFEST.in if the general case does not suit your needs. Comment out
-    # this line to prevent the files from being packaged with your software.
     include_package_data=True,
-
 
     # Allows `setup.py test` to work correctly with pytest
     setup_requires=[] + pytest_runner,
@@ -56,7 +46,6 @@ setup(
     install_requires=requirements,
 
     test_suite='tests',
-    # tests_require=test_requirements,
 
     # Valid platforms your code works on, adjust to your flavor
     platforms=['Linux',

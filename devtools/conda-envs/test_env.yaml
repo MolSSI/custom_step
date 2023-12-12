@@ -14,18 +14,18 @@ dependencies:
   - seamm-util
 
   # Testing
+  - black
   - codecov
   - flake8
   - pytest
   - pytest-cov
 
+  # Documentation
+  - pydata-sphinx-theme
+  - sphinx-design
+
   # Pip-only installs
   - pip:
-    # Testing
-    - yapf
-
     # Documentation
-    - rinohtype
-    - pygments
-    - sphinx-rtd-theme
-    - pystemmer
+    - sphinx-copybutton
+

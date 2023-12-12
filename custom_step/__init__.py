@@ -18,14 +18,15 @@ from custom_step.fontchooser import FontChooser  # noqa: F401
 from custom_step.highlighter import Highlighter  # noqa: F401
 from custom_step.linenumbers import LineNumbers  # noqa: F401
 from custom_step.textarea import TextArea  # noqa: F401
+
 # from custom_step.texteditor import TextEditor  # noqa: F401
 
 # Handle versioneer
 from ._version import get_versions
 
 __author__ = """Paul Saxe"""
-__email__ = 'psaxe@molssi.org'
+__email__ = "psaxe@molssi.org"
 versions = get_versions()
-__version__ = versions['version']
-__git_revision__ = versions['full-revisionid']
+__version__ = versions["version"]
+__git_revision__ = versions["full-revisionid"]
 del get_versions, versions
