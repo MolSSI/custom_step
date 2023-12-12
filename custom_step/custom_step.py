@@ -10,9 +10,9 @@ import custom_step
 
 class CustomStep(object):
     my_description = {
-        'description': 'An interface for Custom Python steps',
-        'group': 'Custom',
-        'name': 'Python'
+        "description": "An interface for Custom Python steps",
+        "group": "Custom",
+        "name": "Python",
     }
 
     def __init__(self, flowchart=None, gui=None):
@@ -23,8 +23,7 @@ class CustomStep(object):
         pass
 
     def description(self):
-        """Return a description of what this extension does
-        """
+        """Return a description of what this extension does"""
         return CustomStep.my_description
 
     def create_node(self, flowchart=None, **kwargs):

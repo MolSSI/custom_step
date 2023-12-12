@@ -12,7 +12,7 @@ from seamm_util.printing import FormattedText as __
 
 logger = logging.getLogger(__name__)
 job = printing.getPrinter()
-printer = printing.getPrinter('Custom')
+printer = printing.getPrinter("Custom")
 
 
 class cd:
@@ -30,13 +30,8 @@ class cd:
 
 
 class Custom(seamm.Node):
-
     def __init__(
-        self,
-        flowchart=None,
-        title='Custom Python',
-        extension=None,
-        logger=logger
+        self, flowchart=None, title="Custom Python", extension=None, logger=logger
     ):
         """A step for custom python in a SEAMM flowchart.
 
@@ -59,27 +54,22 @@ class Custom(seamm.Node):
         -------
         None
         """
-        logger.debug('Creating Custom {}'.format(self))
+        logger.debug("Creating Custom {}".format(self))
 
         super().__init__(
-            flowchart=flowchart,
-            title=title,
-            extension=extension,
-            logger=logger
+            flowchart=flowchart, title=title, extension=extension, logger=logger
         )
 
         self.parameters = custom_step.CustomParameters()
 
     @property
     def version(self):
-        """The semantic version of this module.
-        """
+        """The semantic version of this module."""
         return custom_step.__version__
 
     @property
     def git_revision(self):
-        """The git version of this module.
-        """
+        """The git version of this module."""
         return custom_step.__git_revision__
 
     def description_text(self, P=None):
@@ -101,21 +91,18 @@ class Custom(seamm.Node):
         if not P:
             P = self.parameters.values_to_dict()
 
-        script = P['script'].splitlines()
+        script = P["script"].splitlines()
 
         if len(script) > 10:
-            text = '\n'.join(script[0:9])
-            text += '\n...'
+            text = "\n".join(script[0:9])
+            text += "\n..."
         else:
-            text = '\n'.join(script)
+            text = "\n".join(script)
 
-        return (
-            self.header + '\n' + __(text, indent=4 * ' ', wrap=False).__str__()
-        )
+        return self.header + "\n" + __(text, indent=4 * " ", wrap=False).__str__()
 
     def run(self):
-        """Run a Custom step.
-        """
+        """Run a Custom step."""
         next_node = super().run(printer)
 
         # Get the values of the parameters, dereferencing any variables
@@ -140,7 +127,7 @@ class Custom(seamm.Node):
             "        job.job(sep.join(objects))\n"
             "print = new_print\n"
         )
-        script += P['script']
+        script += P["script"]
 
         # And do it!
         os.makedirs(self.directory, exist_ok=True)
@@ -151,7 +138,7 @@ class Custom(seamm.Node):
             printer.normal(f"\n    ***{e.__class__.__name__}*** {str(e)}")
             raise
         else:
-            printer.normal('    --- end of script ---')
-            printer.normal('')
+            printer.normal("    --- end of script ---")
+            printer.normal("")
 
         return next_node

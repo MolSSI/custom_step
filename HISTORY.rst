@@ -1,6 +1,10 @@
 =======
 History
 =======
+2023.12.3 -- Removed pinning for dependencies
+   * Removed pinning for dependencies to allow for more flexibility in
+     the versions of the dependencies that can be used.
+   * Updated to new documentation, workflows, etc.
 
 0.1.0 (13 February 2019)
 ------------------------

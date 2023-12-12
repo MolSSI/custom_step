@@ -44,14 +44,7 @@ class TkCustom(seamm.TkNode):
     """
 
     def __init__(
-        self,
-        tk_flowchart=None,
-        node=None,
-        canvas=None,
-        x=120,
-        y=20,
-        w=200,
-        h=50
+        self, tk_flowchart=None, node=None, canvas=None, x=120, y=20, w=200, h=50
     ):
         """
         Initialize a graphical node.
@@ -82,31 +75,24 @@ class TkCustom(seamm.TkNode):
         self.dialog = None
 
         super().__init__(
-            tk_flowchart=tk_flowchart,
-            node=node,
-            canvas=canvas,
-            x=x,
-            y=y,
-            w=w,
-            h=h
+            tk_flowchart=tk_flowchart, node=node, canvas=canvas, x=x, y=y, w=w, h=h
         )
 
     def create_dialog(self):
         """Create the dialog!"""
-        frame = super().create_dialog('Edit Custom Python')
+        frame = super().create_dialog("Edit Custom Python")
 
         # Shortcut for parameters
         P = self.node.parameters
 
         # Put in the editor window
         textarea = custom_step.TextArea(frame)
-        textarea.insert(1.0, P['script'])
+        textarea.insert(1.0, P["script"])
         textarea.pack(expand=tk.YES, fill=tk.BOTH)
-        self['textarea'] = textarea
+        self["textarea"] = textarea
 
     def right_click(self, event):
-        """Probably need to add our dialog...
-        """
+        """Probably need to add our dialog..."""
 
         super().right_click(event)
         self.popup_menu.add_command(label="Edit..", command=self.edit)
@@ -114,24 +100,21 @@ class TkCustom(seamm.TkNode):
         self.popup_menu.tk_popup(event.x_root, event.y_root, 0)
 
     def handle_dialog(self, result):
-        """Do the right thing when the dialog is closed.
-        """
+        """Do the right thing when the dialog is closed."""
         # Shortcut for parameters
         P = self.node.parameters
 
-        if result is None or result == 'Cancel':
+        if result is None or result == "Cancel":
             self.dialog.deactivate(result)
-            self['textarea'].delete(1.0, 'end')
-            self['textarea'].insert(1.0, P['script'].value)
-        elif result == 'Help':
+            self["textarea"].delete(1.0, "end")
+            self["textarea"].insert(1.0, P["script"].value)
+        elif result == "Help":
             self.help()
-        elif result == 'OK':
+        elif result == "OK":
             self.dialog.deactivate(result)
             # Capture the parameters from the widgets
-            text = self['textarea'].get(1.0, tk.END).rstrip()
-            P['script'].value = text + '\n'
+            text = self["textarea"].get(1.0, tk.END).rstrip()
+            P["script"].value = text + "\n"
         else:
             self.dialog.deactivate(result)
-            raise RuntimeError(
-                "Don't recognize dialog result '{}'".format(result)
-            )
+            raise RuntimeError("Don't recognize dialog result '{}'".format(result))

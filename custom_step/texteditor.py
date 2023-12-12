@@ -17,29 +17,24 @@ from fontchooser import FontChooser
 
 
 class MainWindow(tk.Tk):
-
     def __init__(self):
         super().__init__()
 
-        self.title('Python Text Editor v3')
-        self.geometry('800x600')
+        self.title("Python Text Editor v3")
+        self.geometry("800x600")
 
-        self.foreground = 'black'
-        self.background = 'lightgrey'
-        self.text_foreground = 'black'
-        self.text_background = 'white'
+        self.foreground = "black"
+        self.background = "lightgrey"
+        self.text_foreground = "black"
+        self.text_background = "white"
 
-        self.config_dir = os.path.join(str(Path.home()), '.tkedit')
+        self.config_dir = os.path.join(str(Path.home()), ".tkedit")
 
-        self.default_scheme_path = os.path.join(
-            self.config_dir, 'schemes/default.yaml'
-        )
+        self.default_scheme_path = os.path.join(self.config_dir, "schemes/default.yaml")
         self.python_language_path = os.path.join(
-            self.config_dir, 'languages/python.yaml'
+            self.config_dir, "languages/python.yaml"
         )
-        self.font_scheme_path = os.path.join(
-            self.config_dir, 'schemes/font.yaml'
-        )
+        self.font_scheme_path = os.path.join(self.config_dir, "schemes/font.yaml")
         self.create_config_directory_if_needed()
 
         self.load_scheme_file(self.default_scheme_path)
@@ -54,20 +49,16 @@ class MainWindow(tk.Tk):
             bg=self.text_background,
             fg=self.text_foreground,
             undo=True,
-            font=(self.font_family, self.font_size)
+            font=(self.font_family, self.font_size),
         )
 
-        self.scrollbar = ttk.Scrollbar(
-            orient="vertical", command=self.scroll_text
-        )
+        self.scrollbar = ttk.Scrollbar(orient="vertical", command=self.scroll_text)
         self.text_area.configure(yscrollcommand=self.scrollbar.set)
 
         self.line_numbers = LineNumbers(
             self, self.text_area, bg="grey", fg="white", width=1
         )
-        self.highlighter = Highlighter(
-            self.text_area, self.python_language_path
-        )
+        self.highlighter = Highlighter(self.text_area, self.python_language_path)
 
         self.menu = tk.Menu(self, bg=self.background, fg=self.foreground)
         self.all_menus = [self.menu]
@@ -79,11 +70,9 @@ class MainWindow(tk.Tk):
         self.right_click_menu = tk.Menu(
             self, bg=self.background, fg=self.foreground, tearoff=0
         )
-        self.right_click_menu.add_command(label='Cut', command=self.edit_cut)
-        self.right_click_menu.add_command(label='Copy', command=self.edit_copy)
-        self.right_click_menu.add_command(
-            label='Paste', command=self.edit_paste
-        )
+        self.right_click_menu.add_command(label="Cut", command=self.edit_cut)
+        self.right_click_menu.add_command(label="Copy", command=self.edit_copy)
+        self.right_click_menu.add_command(label="Paste", command=self.edit_paste)
         self.all_menus.append(self.right_click_menu)
 
         self.scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
@@ -92,7 +81,7 @@ class MainWindow(tk.Tk):
 
         self.bind_events()
 
-        self.open_file = ''
+        self.open_file = ""
 
     def bind_events(self):
         self.text_area.bind("<MouseWheel>", self.scroll_text)
@@ -100,17 +89,17 @@ class MainWindow(tk.Tk):
         self.text_area.bind("<Button-5>", self.scroll_text)
         self.text_area.bind("<Button-3>", self.show_right_click_menu)
 
-        self.bind('<Control-f>', self.show_find_window)
+        self.bind("<Control-f>", self.show_find_window)
 
-        self.bind('<Control-n>', self.file_new)
-        self.bind('<Control-o>', self.file_open)
-        self.bind('<Control-s>', self.file_save)
+        self.bind("<Control-n>", self.file_new)
+        self.bind("<Control-o>", self.file_open)
+        self.bind("<Control-s>", self.file_save)
 
-        self.bind('<Control-h>', self.help_about)
+        self.bind("<Control-h>", self.help_about)
 
-        self.bind('<Control-m>', self.tools_change_syntax_highlighting)
-        self.bind('<Control-g>', self.tools_change_colour_scheme)
-        self.bind('<Control-l>', self.tools_change_font)
+        self.bind("<Control-m>", self.tools_change_syntax_highlighting)
+        self.bind("<Control-g>", self.tools_change_colour_scheme)
+        self.bind("<Control-l>", self.tools_change_font)
 
         self.line_numbers.bind("<MouseWheel>", lambda e: "break")
         self.line_numbers.bind("<Button-4>", lambda e: "break")
@@ -143,17 +132,17 @@ class MainWindow(tk.Tk):
 
     def generate_sub_menus(self, sub_menu_items):
         window_methods = [
-            method_name for method_name in dir(self)
+            method_name
+            for method_name in dir(self)
             if callable(getattr(self, method_name))
         ]
         tkinter_methods = [
-            method_name for method_name in dir(tk.Tk)
+            method_name
+            for method_name in dir(tk.Tk)
             if callable(getattr(tk.Tk, method_name))
         ]
 
-        my_methods = [
-            method for method in set(window_methods) - set(tkinter_methods)
-        ]
+        my_methods = [method for method in set(window_methods) - set(tkinter_methods)]
         my_methods = sorted(my_methods)
 
         for item in sub_menu_items:
@@ -168,11 +157,11 @@ class MainWindow(tk.Tk):
             for match in matching_methods:
                 actual_method = getattr(self, match)
                 method_shortcut = actual_method.__doc__.strip()
-                friendly_name = ' '.join(match.split('_')[1:])
+                friendly_name = " ".join(match.split("_")[1:])
                 sub_menu.add_command(
                     label=friendly_name.title(),
                     command=actual_method,
-                    accelerator=method_shortcut
+                    accelerator=method_shortcut,
                 )
 
             self.menu.add_cascade(label=item.title(), menu=sub_menu)
@@ -180,8 +169,7 @@ class MainWindow(tk.Tk):
 
     def show_about_page(self):
         msg.showinfo(
-            "About",
-            "My text editor, version 2, written in Python3.6 using tkinter!"
+            "About", "My text editor, version 2, written in Python3.6 using tkinter!"
         )
 
     def load_syntax_highlighting_file(self):
@@ -194,28 +182,28 @@ class MainWindow(tk.Tk):
             self.highlighter.force_highlight()
 
     def load_scheme_file(self, scheme):
-        with open(scheme, 'r') as stream:
+        with open(scheme, "r") as stream:
             try:
                 config = yaml.load(stream)
             except yaml.YAMLError as error:
                 print(error)
                 return
 
-        self.foreground = config['foreground']
-        self.background = config['background']
-        self.text_foreground = config['text_foreground']
-        self.text_background = config['text_background']
+        self.foreground = config["foreground"]
+        self.background = config["background"]
+        self.text_foreground = config["text_foreground"]
+        self.text_background = config["text_background"]
 
     def load_font_file(self, file_path):
-        with open(file_path, 'r') as stream:
+        with open(file_path, "r") as stream:
             try:
                 config = yaml.load(stream)
             except yaml.YAMLError as error:
                 print(error)
                 return
 
-        self.font_family = config['family']
-        self.font_size = config['size']
+        self.font_family = config["family"]
+        self.font_size = config["size"]
 
     def change_colour_scheme(self):
         ColourChooser(self)
@@ -233,14 +221,10 @@ class MainWindow(tk.Tk):
     def configure_ttk_elements(self):
         style = ttk.Style()
         style.configure(
-            'editor.TLabel',
-            foreground=self.foreground,
-            background=self.background
+            "editor.TLabel", foreground=self.foreground, background=self.background
         )
         style.configure(
-            'editor.TButton',
-            foreground=self.foreground,
-            background=self.background
+            "editor.TButton", foreground=self.foreground, background=self.background
         )
 
     def change_font(self):
@@ -253,8 +237,8 @@ class MainWindow(tk.Tk):
     def create_config_directory_if_needed(self):
         if not os.path.exists(self.config_dir):
             os.mkdir(self.config_dir)
-            os.mkdir(os.path.join(self.config_dir, 'schemes'))
-            os.mkdir(os.path.join(self.config_dir, 'languages'))
+            os.mkdir(os.path.join(self.config_dir, "schemes"))
+            os.mkdir(os.path.join(self.config_dir, "languages"))
 
         self.create_default_scheme_if_needed()
         self.create_font_scheme_if_needed()
@@ -266,22 +250,23 @@ class MainWindow(tk.Tk):
             #                  + f"foreground: 'black'\n" \
             #                  + f"text_background: 'white'\n" \
             #                  + f"text_foreground: 'black'\n"
-            yaml_file_contents = "background: 'lightgrey'\n" \
-                             + "foreground: 'black'\n" \
-                             + "text_background: 'white'\n" \
-                             + "text_foreground: 'black'\n"
+            yaml_file_contents = (
+                "background: 'lightgrey'\n"
+                + "foreground: 'black'\n"
+                + "text_background: 'white'\n"
+                + "text_foreground: 'black'\n"
+            )
 
-            with open(self.default_scheme_path, 'w') as yaml_file:
+            with open(self.default_scheme_path, "w") as yaml_file:
                 yaml_file.write(yaml_file_contents)
 
     def create_font_scheme_if_needed(self):
         if not os.path.exists(self.font_scheme_path):
             # yaml_file_contents = f"family: Ubuntu Mono\n" \
             #                    + f"size: 14"
-            yaml_file_contents = "family: Ubuntu Mono\n" \
-                               + "size: 14"
+            yaml_file_contents = "family: Ubuntu Mono\n" + "size: 14"
 
-            with open(self.font_scheme_path, 'w') as yaml_file:
+            with open(self.font_scheme_path, "w") as yaml_file:
                 yaml_file.write(yaml_file_contents)
 
     def create_python_language_if_needed(self):
@@ -310,7 +295,7 @@ numbers:
 strings:
   colour: '#e1218b'
 """
-            with open(self.python_language_path, 'w') as yaml_file:
+            with open(self.python_language_path, "w") as yaml_file:
                 yaml_file.write(yaml_file_contents)
 
     # =========== Menu Functions ==============
@@ -345,7 +330,7 @@ strings:
 
         if current_file:
             contents = self.text_area.get(1.0, tk.END)
-            with open(current_file, 'w') as file:
+            with open(current_file, "w") as file:
                 file.write(contents)
 
     def edit_cut(self, event=None):
@@ -411,6 +396,6 @@ def main():
     mw.mainloop()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     mw = MainWindow()
     mw.mainloop()
